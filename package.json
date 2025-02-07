@@ -1,0 +1,20 @@
+{
+  "name": "url-shortener",
+  "version": "0.0.9",
+  "description": "Self hosted URL shortener",
+  "keywords": ["Self hosted", "URL shortener"],
+  "author": {
+    "name": "univdev",
+    "url": "https://github.com/univdev",
+    "email": "pcydeveloper@gmail.com"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/univdev/url-shortener.git"
+  },
+  "homepage": "https://github.com/univdev/url-shortener",
+  "bugs": {
+    "url": "https://github.com/univdev/url-shortener/issues"
+  }
+}
