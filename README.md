@@ -11,3 +11,9 @@ URL을 단축하는 서비스입니다.
 ```sh
 docker compose --env-file ./apps/server/.env.development up -d
 ```
+
+## Features
+
+- ✅ Make Short URL
+- ✅ Redirect
+- ✅ QR Code Generate
