@@ -48,6 +48,15 @@ services:
     volumes:
       - ./apps/server:/app
 
+  frontend:
+    build:
+      context: ./apps/client
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8083
+    volumes:
+      - ./apps/client:/app
+
 volumes:
   postgres-data:
   redis-data:
