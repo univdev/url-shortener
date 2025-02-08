@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { createHash } from 'crypto';
 import * as qrcode from 'qrcode';
@@ -8,6 +12,10 @@ export class UriService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createShortUrl(url: string) {
+    const urlRegex = /^(https?:\/\/)?[^\s/$.?#].[^\s]*$/i;
+    if (!url) throw new BadRequestException('URL is required');
+    if (!urlRegex.test(url)) throw new BadRequestException('Invalid URL');
+
     const shortKey = this.getShortKey(url);
     const generatedUri = await this.prismaService.uri.create({
       data: {
