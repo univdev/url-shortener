@@ -27,7 +27,21 @@ git clone https://github.com/univdev/url-shortener
 cd url-shortener
 ```
 
-2. Start the service using Docker Compose:
+2. Change .env.development file in apps/server
+
+```.env.development
+# Change This file name to .env.development
+
+SERVER_ORIGIN = http://localhost:3000
+
+POSTGRES_PASSWORD=[POSTGRES_PASSWORD] # Change this
+POSTGRES_USER=[POSTGRES_USER] # Change this
+POSTGRES_DB=[POSTGRES_DB] # Change this
+
+DATABASE_URL="postgresql://[POSTGRES_USER]:[POSTGRES_PASSWORD]@postgres/[POSTGRES_DB]?schema=public" # Change this
+```
+
+3. Start the service using Docker Compose:
 
 ```bash
 docker compose --env-file ./apps/server/.env.development up -d
