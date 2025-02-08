@@ -40,6 +40,22 @@ docker compose --env-file ./apps/server/.env.development up -d
 - **ORM**: Prisma
 - **Containerization**: Docker
 
+### Features Overview
+
+#### 🔗 URL Shortening
+
+- Input your long URL
+- Get an easy-to-share shortened link
+- Copy to clipboard with one click
+
+#### 📱 QR Code
+
+- Automatically generated for each shortened URL
+- Perfect for offline sharing
+- High-quality PNG format
+
+![image](./images/Usage.gif)
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
