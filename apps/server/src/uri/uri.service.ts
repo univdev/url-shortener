@@ -3,13 +3,23 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { createHash } from 'crypto';
 import * as qrcode from 'qrcode';
 
 @Injectable()
 export class UriService {
   constructor(private readonly prismaService: PrismaService) {}
+
+  async getUris(offset = 0, limit = 10) {
+    return this.prismaService.uri.findMany({
+      take: limit,
+      skip: offset,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 
   async createShortUrl(url: string) {
     const urlRegex = /^(https?:\/\/)?[^\s/$.?#].[^\s]*$/i;

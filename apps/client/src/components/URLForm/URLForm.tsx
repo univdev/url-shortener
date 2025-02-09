@@ -54,6 +54,13 @@ export default function URLForm({ url, onSuccess }: URLFormProps) {
               fullWidth
               label="URL"
               placeholder="https://example.com"
+              slotProps={{
+                input: {
+                  inputProps: {
+                    "data-testid": "url-input",
+                  },
+                },
+              }}
               onChange={(e) => field.onChange(e.target.value)}
             />
           )}
