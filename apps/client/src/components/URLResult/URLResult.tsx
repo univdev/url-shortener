@@ -15,6 +15,7 @@ export const URLResult: FC<URLResultProps> = ({ shortUrl }) => {
   const urlResultQuery = useUrlResultQuery(shortUrl);
   const urlQRQuery = useUrlQRQuery(shortUrl);
 
+  if (!shortUrl) return null;
   if (urlResultQuery.isSuccess === false) return null;
   if (urlQRQuery.isSuccess === false) return null;
 
@@ -31,6 +32,9 @@ export const URLResult: FC<URLResultProps> = ({ shortUrl }) => {
         fullWidth
         slotProps={{
           input: {
+            inputProps: {
+              "data-testid": "url-input",
+            },
             readOnly: true,
             endAdornment: (
               <CopyToClipboard text={fullUrl} onCopy={handleCopied}>
@@ -42,7 +46,13 @@ export const URLResult: FC<URLResultProps> = ({ shortUrl }) => {
           },
         }}
       />
-      <Image src={urlQRQuery.data.data} alt="QR" width={200} height={200} />
+      <Image
+        src={urlQRQuery.data.data}
+        alt="QR"
+        width={200}
+        height={200}
+        data-testid="qr-image"
+      />
     </Box>
   );
 };
