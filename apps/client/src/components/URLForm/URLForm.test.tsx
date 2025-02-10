@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import URLForm from "./URLForm";
 import { Provider } from "../ReactQuery/Provider";
+import { useCreateShortURLMutation } from "./useCreateShortURLMutation";
 
 jest.mock("./useCreateShortURLMutation", () => ({
   useCreateShortURLMutation: jest.fn(),
@@ -21,10 +22,7 @@ describe("URLForm", () => {
   beforeEach(() => {
     mockMutateAsync.mockResolvedValue({ data: { shortKey: "abcdef" } });
 
-    const useCreateShortURLMutation =
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      require("./useCreateShortURLMutation").useCreateShortURLMutation;
-    useCreateShortURLMutation.mockReturnValue({
+    (useCreateShortURLMutation as jest.Mock).mockReturnValue({
       mutateAsync: mockMutateAsync,
       isPending: false,
     });
